@@ -1,6 +1,14 @@
-# AI Training Courses
+# AI Training Courses and other events
+
+This is somewhere for the CEDA/JASMIN team to keep track of past courses and events related to AI. 
+Additionally, we can use it to highlight upcoming events and even record training needs.
 
 **Add new/latest courses at the top of the table.**
+
+## Training needs
+
+Add your needs here:
+- general AI introduction
 
 ## Future Courses
 
@@ -15,6 +23,7 @@
 | Year | Course | URLs | Format | Run by | Duration | Attended by (and when) | Contents &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Comments |
 |---|---|---|---|---|---|---|---|---|
 |   |   |   |   |   |   |   |   |   |
+| 2024 | AI4EO Workshop | [Workshop website](https://ml4eo.org/) | In-person | University of Exeter | 2 days | Ag Stephens (24-25/06/2024) | Excellent workshop. Lots of interesting talks showing how people are using AI in different EO applications. Most of it focussed on image classification and segmentation of 2D high or low-res Earth imagery. |   |
 | 2024 | Classical Machine Learning | [Notebooks](https://github.com/stfc-sciml/sciml-workshop/tree/master/course_3.0/CLASSICAL) | Hybrid | STFC SciML Team | 2.5 hrs | CEDA Staff (07/06/2024) | Intro to Supervised and Unsupervised ML; Including Decision Trees and Clustering; Slides and Jupyter Notebooks using `scikit-learn`. |  |
 | 2024 | LLMs, RAG, Fine-Tuning - Outerbounds workshop | [GitHub Repo](https://github.com/outerbounds/generative-ai-summit-austin-2023) | Online | Outerbounds (company that maintains Metaflow) | 3 hrs | Ag Stephens (29/05/2024) | Interesting example of running ML workflows in the cloud; Metaflow, AWS, Argo; Overview of using Retrieval Augmented Generation (RAG) with LLMs. | Useful example to see how industry does these things. RAG might be interesting to us. |
 | 2024 |Introduction to Geospatial Data Analysis with ChatGPT and Google Earth Engine | [Webpage](https://wlc.unu.edu/courses/course-v1:UNU-INWEH+INWEH-20+2023_T4/course/) | Online | United Nations University  - Institute for Water, Environment and Health | 1/2 day | Ag Stephens (13/03/2024) | Interesting combination of ChatGPT prompting and coding in Google Earth Engine. | It is likely that this area will continue to grow in importance in our sector. |
