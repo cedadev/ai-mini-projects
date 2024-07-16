@@ -12,7 +12,6 @@ _Example_: "Project A aims to reduce customer support response time by 30% using
 ## Project Outline
 
 **Project Name:** Customer Support Chatbot
-**Objective:** Reduce customer support response time by 30%.
 **Scope:** Implementation of a chatbot for handling common queries.
 **Timeline:** 
   - Planning: 1 week
@@ -30,3 +29,7 @@ _Example_: "Project A aims to reduce customer support response time by 30% using
 **Metrics:**
   - Average response time
   - Customer satisfaction scores
+
+## Detailed description
+
+_add content here_
