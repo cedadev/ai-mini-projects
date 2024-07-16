@@ -2,7 +2,8 @@ gitpython
 pandas
 langchain
 langchain-openai
-#community
 openai
 sentence_transformers
 pinecone
+chainlit
+python-dotenv
