@@ -9,4 +9,3 @@ Some AI mini-projects to play and learn
   - using a synthetic dataset
   - training models and comparing performance
 
-

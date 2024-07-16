@@ -1,0 +1,9 @@
+gitpython
+pandas
+langchain
+langchain-openai
+openai
+sentence_transformers
+pinecone
+chainlit
+python-dotenv
