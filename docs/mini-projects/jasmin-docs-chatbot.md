@@ -2,23 +2,25 @@
 
 ## Justification
 
-- **Objective:** Create a simple filename classification Notebook to demonstrate a number of basic ML methods using sklearn.
-- **Success Metrics:** Metrics to compare multiple models (accuracy vs compute time). Demonstrate predictive capability of _best_ model.
+- **Objective:** Create a chatbot that knows about JASMIN based on our documentation. Deploy the chatbot for internal testing and evaluation.
+- **Success Metrics:** Does the chatbot tell the truth? Does it add value? Could we consider providing a public version? Could we add more information to it (for CEDA docs etc)?
 
 ## Project Outline
 
 **Project Name:** JASMIN Docs Chatbot
-**Scope:** Create a synthetic dataset and run entire workflow within 10 minutes. Simple teaching notebook, not for production.
+**Scope:** Testing out AI technologies for potential use in communications with our users. Considered experimental at this stage but might lead to a production service.
 **Timeline:** 
-  - Planning: 1 hour
-  - Development: 1/2 day
-  - Testing: 2 hours
-  - Deployment: N/A
+  - Planning: 1 day
+  - Development: 3 days
+  - Testing: 3 days
+  - Deployment: (internal) 1 day
 **Team:** 
   - Developer: Ag
-  - Tester: Diane
+  - Tester: ?
 **Datasets:**
-  - Synthetic dataset created inline
+  - Using
+**Dependencies and tools:**
+  - 
 **AI Methods:**
   - Nearest Neighbors
   - Linear SVM
