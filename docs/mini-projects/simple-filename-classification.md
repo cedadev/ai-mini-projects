@@ -7,19 +7,19 @@
 
 ## Project Outline
 
-**Project Name:** Simple filename classification
-**Scope:** Create a synthetic dataset and run entire workflow within 10 minutes. Simple teaching notebook, not for production.
-**Timeline:** 
+- **Project Name:** Simple filename classification
+- **Scope:** Create a synthetic dataset and run entire workflow within 10 minutes. Simple teaching notebook, not for production.
+- **Timeline:** 
   - Planning: 1 hour
   - Development: 1/2 day
   - Testing: 2 hours
   - Deployment: N/A
-**Team:** 
+- **Team:** 
   - Developer: Ag
   - Tester: Diane
-**Datasets:**
+- **Datasets:**
   - Synthetic dataset created inline
-**AI Methods:**
+- **AI Methods:**
   - Nearest Neighbors
   - Linear SVM
   - RBF SVM
@@ -30,7 +30,10 @@
   - AdaBoost
   - Naive Bayes
   - QDA
-**Metrics:**
+- **Dependencies and tools**:
+  - scikit-learn
+  - pandas
+- **Metrics:**
   - Accuracy
   - R-squared
   - Mean squared error
