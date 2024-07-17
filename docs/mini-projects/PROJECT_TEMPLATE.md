@@ -11,22 +11,25 @@ _Example_: "Project A aims to reduce customer support response time by 30% using
 
 ## Project Outline
 
-**Project Name:** Customer Support Chatbot
-**Scope:** Implementation of a chatbot for handling common queries.
-**Timeline:** 
+- **Project Name:** Customer Support Chatbot
+- **Scope:** Implementation of a chatbot for handling common queries.
+- **Timeline:** 
   - Planning: 1 week
   - Development: 3 weeks
   - Testing: 2 weeks
   - Deployment: 1 week
-**Team:** 
+- **Team:** 
   - Project Manager: Alice
   - Data Scientist: Bob
   - Developer: Charlie
-**Datasets:**
+- **Datasets:**
   - Helpdesk logs
-**AI Methods:**
+- **AI Methods:**
   - Decision Trees
-**Metrics:**
+- **Dependencies and tools:**
+  - Llama3
+  - FastAPI
+- **Metrics:**
   - Average response time
   - Customer satisfaction scores
 
