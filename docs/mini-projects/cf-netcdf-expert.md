@@ -37,3 +37,7 @@
 ## Detailed description
 
 TBC
+
+## Relevant issues
+
+https://github.com/cedadev/ai-mini-projects/issues/7
