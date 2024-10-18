@@ -152,7 +152,7 @@ class RAGController:
         docs = self.df.contents.tolist()
 
         # Encode documents
-        if self.embeddings != None:
+        if self.embeddings is None:
             self._create_embeddings()
 
         ids = self.df.index.values
