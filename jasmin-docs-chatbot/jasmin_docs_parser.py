@@ -23,7 +23,7 @@ def check_url(url):
     response.raise_for_status()
 
 
-def parse_md_file(file_path, docs_url="https://help.jasmin.ac.uk/docs"):
+def parse_md_file(file_path, docs_url="https://help.jasmin.ac.uk"):
     """
     Parse a markdown file and return a list of sections.
     

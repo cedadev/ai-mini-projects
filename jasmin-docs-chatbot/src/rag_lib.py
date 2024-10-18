@@ -1,15 +1,11 @@
 import os, time, sys
 import warnings
-
 warnings.filterwarnings("ignore")
 
 import pandas as pd
 
 from sentence_transformers import SentenceTransformer
-
 from langchain_openai import ChatOpenAI
-#from langchain_community.chat_models import ChatOpenAI
-#from langchain.chat_models import ChatOpenAI
 from langchain.prompts.chat import ChatPromptTemplate
 
 from pinecone import Pinecone, ServerlessSpec
@@ -23,14 +19,12 @@ req_keys = ["PINECONE_API_KEY", "OPENAI_API_KEY"]
 for req_key in req_keys:
     if req_key not in os.environ:
 	    raise KeyError(f"Missing env var: {req_key}")
-		
+
 pinecone_api_key = os.environ["PINECONE_API_KEY"]
 openai_api_key = os.environ["OPENAI_API_KEY"]
 
 # NOTE: Your ChatGPT paid account is NOT THE SAME as an OpenAI account!
-
 pc = Pinecone(api_key=pinecone_api_key)
-
 metric = "cosine"
 
 class AbstractEmbedder:
@@ -56,14 +50,16 @@ class SentenceTransformerEmbedder(AbstractEmbedder):
     def embed(self, sentences):
         return self.model.encode(sentences, show_progress_bar=True)
 
+
+# Global Data Frame of JASMIN docs (from CSV file or parsed and written if n
+# no CSV file found.
 dfg = None
+df_csv = "jasmin_docs.csv"
+
 
 def load_df():
     global dfg
     if isinstance(dfg, pd.DataFrame): return dfg
-
-    df_csv = "jasmin_docs.csv"
-
 
     if os.path.isfile(df_csv):
         print(f"Loading docs from: {df_csv}")
@@ -93,16 +89,16 @@ def get_encoder():
     encoder = SentenceTransformerEmbedder(embedding_model, device="cpu")
     return encoder
 
-
-
-
-DO_ENCODE = False
+# Set to True if you want to  encode th enew set of docs use the embedder
+DO_ENCODE = True #False
 
 if DO_ENCODE:
     # Fetch docs from dataframe
+    df = load_df()
     docs = df.contents.tolist()
 
     # Encode documents
+    encoder = get_encoder()
     embeddings = encoder.embed(docs)  # takes ~30-45 seconds on average in sandbox instance
     dimension = len(embeddings[0])
     print("Length (dimension) of embeddings is %s" % dimension)
@@ -112,18 +108,20 @@ pc = Pinecone(api_key=pinecone_api_key)
 index_name = "jasmin-documentation"
 metric = "cosine"  # https://docs.pinecone.io/docs/indexes#distance-metrics
 
-DELETE_INDEX = False
+# If you want to delete the old index (in order to reindex), set to True:
+DELETE_INDEX = True #False
 
 if DELETE_INDEX:
-    pc.delete_index(    
+    pc.delete_index(
         name=index_name,
-        dimension=dimension,
-        metric=metric,
-        spec=ServerlessSpec(cloud="aws", region="us-east-1"),
+#        dimension=dimension,
+#        metric=metric,
+#        spec=ServerlessSpec(cloud="aws", region="us-east-1"),
     )
     print(f"Deleted: {index_name}")
 
 
+# If index does not exist - it will automatically be created here
 if index_name not in pc.list_indexes().names():
     print(f"Creating index: {index_name}")
     # https://docs.pinecone.io/reference/create_index
@@ -135,8 +133,6 @@ if index_name not in pc.list_indexes().names():
     )
 
 
-#ids = df.index.values
-
 pc_index = None
 def get_index():
     # connect to the index
@@ -146,8 +142,12 @@ def get_index():
 
     return pc_index
 
-DO_UPSERT = False
+
+# Set to True if you want to add content
+
+DO_UPSERT = True #False
 if DO_UPSERT:
+    df = load_df()
     ids = df.index.values
     # connect to the index
     index = get_index()
@@ -164,7 +164,8 @@ if DO_UPSERT:
 else:
     print(f"Index {index_name} has already been populated.")
 
-# Now execute a query
+
+# This function executes a query
 def get_response(query):
     print(f"\n\nTesting this query:\n\t'{query}'.")
 
