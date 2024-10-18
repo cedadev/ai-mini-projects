@@ -1,3 +1,18 @@
+# Notes
+
+## How to regather, regenerate and reindex the docs from scratch
+
+```
+python regenerate_and_reindex.py
+```
+
+### How to test a simple query
+
+```
+python test_query.py
+```
+
+
 # Using Retrieval Augmented Generation (RAG) to improve the integrity of LLM responses
 
 Retrieval Augmented Generation (RAG) is an approach (***REF***) that allows you to exploit the capabilities of a Large Language Model (LLM) whilst focussing the subject area on a collection of your own (i.e. trusted) documents. 
