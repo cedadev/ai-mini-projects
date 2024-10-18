@@ -10,7 +10,11 @@ GIT_REPO_PATH = "./jasmin-help-hugo-hinode"
 CSV_PATH = "./jasmin_docs.csv"
 
 
-def clone_repo(url, path):
+def clone_repo(url=GIT_REPO_URL, path=GIT_REPO_PATH, force=False):
+    if force and os.path.isdir(path):
+        print(f"Removing existing repo at {path}.")
+        os.system(f"rm -rf {path}")
+
     if not os.path.isdir(path):
         print(f"Cloning {url} to {path}.")
         git.Repo.clone_from(url, path)
