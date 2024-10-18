@@ -47,10 +47,11 @@ class SentenceTransformerEmbedder(AbstractEmbedder):
         return self.model.encode(sentences, show_progress_bar=True)
 
 
-
-
+# The RAG Controller class that manages the RAG model:
+# - Regenerates the index
+# - Queries the index
 class RAGController:
-    def __init__(self, openai_api_key, pinecone_api_key):
+    def __init__(self, openai_api_key=openai_api_key, pinecone_api_key=pinecone_api_key):
         self.openai_api_key = openai_api_key
         self.pinecone_api_key = pinecone_api_key
 
@@ -151,7 +152,7 @@ class RAGController:
         docs = self.df.contents.tolist()
 
         # Encode documents
-        if not self.embeddings:
+        if self.embeddings != None:
             self._create_embeddings()
 
         ids = self.df.index.values
