@@ -98,7 +98,7 @@ class RAGController:
         if isinstance(self.df, pd.DataFrame): 
             return
 
-        if os.path.isfile(self.df_csv):
+        if os.path.isfile(self.csv_path):
             print(f"Loading docs from: {self.csv_path}")
             self.df = pd.read_csv(self.csv_path)
         else:
