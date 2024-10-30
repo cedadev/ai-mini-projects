@@ -163,3 +163,4 @@ cython_debug/
 #.idea/
 # jasmin-helpdocs ignores
 jasmin-docs-chatbot/jasmin-help-hugo-hinode
+jasmin-docs-chatbot/ceda-docs*
