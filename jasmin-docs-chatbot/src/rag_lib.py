@@ -222,6 +222,7 @@ class RAGController:
         for m in matches:
             row_idxs.append(int(m["id"]))
 
+        print(f"Looking at indexes: {row_idxs}")
         self.load_df()
         retrieved_results = self.df.iloc[row_idxs, :]
 
@@ -229,9 +230,11 @@ class RAGController:
 
         # Set up the prompt to send the message to the OpenAI model
         system_message = """
-    You are a helpful assistant that helps scientists to use the JASMIN platform for their data workflows.
+    You are a helpful assistant that helps scientists to learn about and work with the Centre for Environmental Data Analysie (CEDA) and
+    the JASMIN platform. You understand the connections between CEDA and JASMIN, and you can advise users based on the information you 
+    have about both services, to help them with finding data, identifying available services and managing their scientific data workflows.
 
-    Here is some relevant context you can use, each with links to a page in the JASMIN documentation where the context is retrieved from:
+    Here is some relevant context you can use, each with links to a page in the relevant documentation where the context is retrieved from:
     """
 
         context_template = """
