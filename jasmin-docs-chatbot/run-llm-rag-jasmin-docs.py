@@ -14,7 +14,7 @@ from langchain.prompts.chat import ChatPromptTemplate
 
 from pinecone import Pinecone, ServerlessSpec
 
-from jasmin_docs_parser import parse_repo
+from docs_parser import parse_docs
 
 
 # Check that service API keys are defined as environment variables
@@ -58,7 +58,7 @@ class SentenceTransformerEmbedder(AbstractEmbedder):
 
 
 
-df_csv = "jasmin_docs.csv"
+df_csv = "ceda_jasmin_docs.csv"
 
 
 if os.path.isfile(df_csv):
@@ -66,7 +66,7 @@ if os.path.isfile(df_csv):
     df = pd.read_csv(df_csv)
 else:
     print("Parsing docs from GitHub repo...")
-    df = parse_repo(csv_path="jasmin_docs.csv")
+    df = parse_docs(csv_path="ceda_jasmin_docs.csv")
     df.to_csv(df_csv, index=False)
     print(f"Wrote: {df_csv}")
 

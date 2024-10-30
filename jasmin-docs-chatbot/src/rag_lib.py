@@ -11,7 +11,7 @@ from langchain.prompts.chat import ChatPromptTemplate
 from pinecone import Pinecone, ServerlessSpec
 
 sys.path.extend(["..", "."])
-from jasmin_docs_parser import clone_repo, parse_repo
+from docs_parser import clone_repo, parse_docs
 
 
 # Check that service API keys are defined as environment variables
@@ -56,7 +56,7 @@ class RAGController:
         self.pinecone_api_key = pinecone_api_key
 
         self.pc = Pinecone(api_key=pinecone_api_key)
-        self.csv_path = "jasmin_docs.csv"
+        self.csv_path = "ceda_jasmin_docs.csv"
         self.df = None
 
         self.pc_index = None
@@ -64,6 +64,7 @@ class RAGController:
         self.embeddings = None
         self.encoder = self._get_encoder()
         self.metric = "cosine"   # https://docs.pinecone.io/docs/indexes#distance-metrics
+        self.batch_size = 250 # Number of records to upsert at any 1 time
 
     def _get_encoder(self):
         # Instantiate an encoder
@@ -73,6 +74,7 @@ class RAGController:
         return encoder
 
     def regenerate(self):
+        "Regenerates everything."
         self._remove_csv()
         self._reclone_repo()
         self._create_csv()
@@ -80,6 +82,14 @@ class RAGController:
         self._delete_index()
         self._create_index()
         self._upsert_index() 
+
+    def reindex(self):
+        "Only reindexes from current CSV file (if it exists)."
+        self.load_df()
+        self._create_embeddings()
+        self._delete_index()
+        self._create_index()
+        self._upsert_index()
 
     def _remove_csv(self):
         if os.path.isfile(self.csv_path):
@@ -91,7 +101,7 @@ class RAGController:
         clone_repo(force=True)
 
     def _create_csv(self):
-        self.df = parse_repo(csv_path=self.csv_path)
+        self.df = parse_docs(csv_path=self.csv_path)
         print(f"Wrote: {self.csv_path}")
 
     def load_df(self):
@@ -103,7 +113,7 @@ class RAGController:
             self.df = pd.read_csv(self.csv_path)
         else:
             print("Parsing docs from GitHub repo...")
-            self.df = parse_repo(csv_path=self.csv_path)
+            self.df = parse_docs(csv_path=self.csv_path)
             self.df.to_csv(self.csv_path, index=False)
             print(f"Wrote: {self.csv_path}")
 
@@ -121,7 +131,7 @@ class RAGController:
         # Encode documents
         self.embeddings = self.encoder.embed(docs)  # takes ~30-45 seconds on average in sandbox instance
         self.dimension = len(self.embeddings[0])
-        print("Length (dimension) of embeddings is: {dimension}")
+        print(f"Length (dimension) of embeddings is: {self.dimension}")
     
     def _get_index(self):
         # connect to the index
@@ -147,15 +157,10 @@ class RAGController:
         )
         print(f"Deleted: {self.index_name}")
 
-    def _upsert_index(self):
-        self.load_df()
-        docs = self.df.contents.tolist()
+    def _upsert_records(self, df, embeddings):
+        docs = df.contents.tolist()
+        ids = df.index.values
 
-        # Encode documents
-        if self.embeddings is None:
-            self._create_embeddings()
-
-        ids = self.df.index.values
         # connect to the index
         index = self._get_index()
 
@@ -165,11 +170,33 @@ class RAGController:
                 "values": emb.tolist(),
                 "metadata": {"text": txt},
             }
-            for idx, (txt, emb) in enumerate(zip(docs, self.embeddings))
+            for idx, (txt, emb) in enumerate(zip(docs, embeddings))
         ]
-        
+
         upsert_response = index.upsert(vectors=vectors)
+
+    def _upsert_index(self):
+        start = time.time()
+        print("[INFO] Starting to upsert contents...")
+        self.load_df()
+
+        # Encode documents
+        if self.embeddings is None:
+            self._create_embeddings()
+
+        i = 0
+
+        while i < len(self.df):
+            start_index, end_index = i, i + self.batch_size
+            df = self.df.iloc[start_index:end_index]
+            embeddings = self.embeddings[start_index:end_index]
+
+            print(f"Upserting records in index range: [{start_index}:{end_index}]")
+            self._upsert_records(df, embeddings)
+            i += self.batch_size
+
         print(f"Index {self.index_name} has been successfully populated.")
+        print(f"[INFO] Time taken to upsert content: {(time.time() - start):0.3f} seconds.")
 
 
     def get_response(self, query):
