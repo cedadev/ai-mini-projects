@@ -253,17 +253,6 @@ def parse_docs(git_repo_url=GIT_REPO_URL,
                     sections.extend(new_sections)
                     count += 1
 
-    if False:
-      print("Now parsing CEDA Docs if found.")
-      if ceda_docs_path and os.path.isdir(ceda_docs_path):
-        for file in os.listdir(ceda_docs_path):
-            if file.endswith(".md") and file not in exclude_files:
-                new_sections = parse_md_file_cedadocs(os.path.join(ceda_docs_path, file))
-
-                if new_sections:
-                    sections.extend(new_sections)
-                    count += 1
-
     print(f"Parsed {count} files.")
     df = pd.DataFrame(sections, columns=["title", "contents", "page_url"])
 
