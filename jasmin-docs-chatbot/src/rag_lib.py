@@ -157,16 +157,19 @@ class RAGController:
         )
         print(f"Deleted: {self.index_name}")
 
-    def _upsert_records(self, df, embeddings):
+    def _upsert_records(self, start_index, end_index):
+        df = self.df.iloc[start_index:end_index]
         docs = df.contents.tolist()
         ids = df.index.values
+
+        embeddings = self.embeddings[start_index:end_index]
 
         # connect to the index
         index = self._get_index()
 
         vectors = [
             {
-                "id": str(idx),
+                "id": str(idx + start_index),
                 "values": emb.tolist(),
                 "metadata": {"text": txt},
             }
@@ -188,11 +191,11 @@ class RAGController:
 
         while i < len(self.df):
             start_index, end_index = i, i + self.batch_size
-            df = self.df.iloc[start_index:end_index]
-            embeddings = self.embeddings[start_index:end_index]
+#            df = self.df.iloc[start_index:end_index]
+#            embeddings = self.embeddings[start_index:end_index]
 
             print(f"Upserting records in index range: [{start_index}:{end_index}]")
-            self._upsert_records(df, embeddings)
+            self._upsert_records(start_index, end_index) #df, embeddings)
             i += self.batch_size
 
         print(f"Index {self.index_name} has been successfully populated.")

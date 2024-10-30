@@ -7,3 +7,4 @@ sentence_transformers
 pinecone
 chainlit
 python-dotenv
+bs4
