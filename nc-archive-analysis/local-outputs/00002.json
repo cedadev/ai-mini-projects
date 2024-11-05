@@ -1,0 +1,1782 @@
+{
+    "uas_rcp85_land-rcm_eur_12km_09_day_20001201-20101130": {
+        "dir": "land-rcm/eur/12km/rcp85/09/uas/day/v20190731",
+        "fbase": "uas_rcp85_land-rcm_eur_12km_09_day_20001201-20101130",
+        "ext": "nc",
+        "dims": {
+            "ensemble_member": 1,
+            "time": 3600,
+            "grid_latitude": 407,
+            "grid_longitude": 418,
+            "bnds": 2,
+            "string27": 27,
+            "string64": 64
+        },
+        "variables": {
+            "uas": {
+                "dtype": "float32",
+                "dimensions": [
+                    "ensemble_member",
+                    "time",
+                    "grid_latitude",
+                    "grid_longitude"
+                ],
+                "size": 612453600,
+                "shape": [
+                    1,
+                    3600,
+                    407,
+                    418
+                ],
+                "attrs": {
+                    "_FillValue": 1.0000000200408773e+20,
+                    "standard_name": "eastward_wind",
+                    "long_name": "Eastward wind component",
+                    "units": "m s-1",
+                    "description": "Eastward wind",
+                    "label_units": "m s-1",
+                    "plot_label": "Eastward wind at 10m (m s-1)",
+                    "cell_methods": "time: mean",
+                    "grid_mapping": "rotated_latitude_longitude",
+                    "coordinates": "ensemble_member_id month_number year yyyymmdd"
+                }
+            },
+            "rotated_latitude_longitude": {
+                "dtype": "int32",
+                "dimensions": [],
+                "size": 1,
+                "shape": [],
+                "attrs": {
+                    "grid_mapping_name": "rotated_latitude_longitude",
+                    "longitude_of_prime_meridian": 0.0,
+                    "earth_radius": 6371229.0,
+                    "grid_north_pole_latitude": 39.25,
+                    "grid_north_pole_longitude": 198.0,
+                    "north_pole_grid_longitude": 0.0
+                }
+            },
+            "ensemble_member": {
+                "dtype": "int32",
+                "dimensions": [
+                    "ensemble_member"
+                ],
+                "size": 1,
+                "shape": [
+                    1
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member"
+                }
+            },
+            "time": {
+                "dtype": "float64",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 3600,
+                "shape": [
+                    3600
+                ],
+                "attrs": {
+                    "axis": "T",
+                    "bounds": "time_bnds",
+                    "units": "hours since 1970-01-01 00:00:00",
+                    "standard_name": "time",
+                    "calendar": "360_day"
+                }
+            },
+            "time_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "time",
+                    "bnds"
+                ],
+                "size": 7200,
+                "shape": [
+                    3600,
+                    2
+                ],
+                "attrs": {}
+            },
+            "grid_latitude": {
+                "dtype": "float64",
+                "dimensions": [
+                    "grid_latitude"
+                ],
+                "size": 407,
+                "shape": [
+                    407
+                ],
+                "attrs": {
+                    "axis": "Y",
+                    "bounds": "grid_latitude_bnds",
+                    "units": "degrees",
+                    "standard_name": "grid_latitude"
+                }
+            },
+            "grid_latitude_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "grid_latitude",
+                    "bnds"
+                ],
+                "size": 814,
+                "shape": [
+                    407,
+                    2
+                ],
+                "attrs": {}
+            },
+            "grid_longitude": {
+                "dtype": "float64",
+                "dimensions": [
+                    "grid_longitude"
+                ],
+                "size": 418,
+                "shape": [
+                    418
+                ],
+                "attrs": {
+                    "axis": "X",
+                    "bounds": "grid_longitude_bnds",
+                    "units": "degrees",
+                    "standard_name": "grid_longitude"
+                }
+            },
+            "grid_longitude_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "grid_longitude",
+                    "bnds"
+                ],
+                "size": 836,
+                "shape": [
+                    418,
+                    2
+                ],
+                "attrs": {}
+            },
+            "ensemble_member_id": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "ensemble_member",
+                    "string27"
+                ],
+                "size": 27,
+                "shape": [
+                    1,
+                    27
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member_id"
+                }
+            },
+            "month_number": {
+                "dtype": "int32",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 3600,
+                "shape": [
+                    3600
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "month_number"
+                }
+            },
+            "year": {
+                "dtype": "int32",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 3600,
+                "shape": [
+                    3600
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "year"
+                }
+            },
+            "yyyymmdd": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "time",
+                    "string64"
+                ],
+                "size": 230400,
+                "shape": [
+                    3600,
+                    64
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "yyyymmdd"
+                }
+            }
+        },
+        "global_attrs": {
+            "collection": "land-rcm",
+            "contact": "ukcpproject@metoffice.gov.uk",
+            "creation_date": "2019-07-31T00:00:00",
+            "domain": "eur",
+            "frequency": "day",
+            "institution": "Met Office Hadley Centre (MOHC), FitzRoy Road, Exeter, Devon, EX1 3PB, UK.",
+            "institution_id": "MOHC",
+            "project": "UKCP18",
+            "references": "https://ukclimateprojections.metoffice.gov.uk",
+            "resolution": "12km",
+            "scenario": "rcp85",
+            "source": "UKCP18 regional realisation from a set of 12 limited-area Met Office Unified Model Global Atmosphere GA7 models at 12km resolution driven by perturbed variants of the global HadGEM3-GC3.05",
+            "title": "UKCP18 land projections - 12km regional climate model, eastward wind at 10m (m s-1) over the UK for the RCP 8.5 scenario",
+            "version": "v20190731",
+            "Conventions": "CF-1.5"
+        },
+        "data": {
+            "time": [
+                "2000-06-22T12:00:00",
+                "2010-04-30T12:00:00"
+            ]
+        }
+    },
+    "hurs_rcp85_land-rcm_eur_12km_13_day_20001201-20101130": {
+        "dir": "land-rcm/eur/12km/rcp85/13/hurs/day/v20190731",
+        "fbase": "hurs_rcp85_land-rcm_eur_12km_13_day_20001201-20101130",
+        "ext": "nc",
+        "dims": {
+            "ensemble_member": 1,
+            "time": 3600,
+            "grid_latitude": 406,
+            "grid_longitude": 418,
+            "bnds": 2,
+            "string27": 27,
+            "string64": 64
+        },
+        "variables": {
+            "hurs": {
+                "dtype": "float32",
+                "dimensions": [
+                    "ensemble_member",
+                    "time",
+                    "grid_latitude",
+                    "grid_longitude"
+                ],
+                "size": 610948800,
+                "shape": [
+                    1,
+                    3600,
+                    406,
+                    418
+                ],
+                "attrs": {
+                    "_FillValue": 1.0000000200408773e+20,
+                    "standard_name": "relative_humidity",
+                    "long_name": "Relative humidity",
+                    "units": "%",
+                    "description": "Relative humidity",
+                    "label_units": "%",
+                    "plot_label": "Relative humidity at 1.5m (%)",
+                    "cell_methods": "time: mean",
+                    "grid_mapping": "rotated_latitude_longitude",
+                    "coordinates": "ensemble_member_id month_number year yyyymmdd"
+                }
+            },
+            "rotated_latitude_longitude": {
+                "dtype": "int32",
+                "dimensions": [],
+                "size": 1,
+                "shape": [],
+                "attrs": {
+                    "grid_mapping_name": "rotated_latitude_longitude",
+                    "longitude_of_prime_meridian": 0.0,
+                    "earth_radius": 6371229.0,
+                    "grid_north_pole_latitude": 39.25,
+                    "grid_north_pole_longitude": 198.0,
+                    "north_pole_grid_longitude": 0.0
+                }
+            },
+            "ensemble_member": {
+                "dtype": "int32",
+                "dimensions": [
+                    "ensemble_member"
+                ],
+                "size": 1,
+                "shape": [
+                    1
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member"
+                }
+            },
+            "time": {
+                "dtype": "float64",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 3600,
+                "shape": [
+                    3600
+                ],
+                "attrs": {
+                    "axis": "T",
+                    "bounds": "time_bnds",
+                    "units": "hours since 1970-01-01 00:00:00",
+                    "standard_name": "time",
+                    "calendar": "360_day"
+                }
+            },
+            "time_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "time",
+                    "bnds"
+                ],
+                "size": 7200,
+                "shape": [
+                    3600,
+                    2
+                ],
+                "attrs": {}
+            },
+            "grid_latitude": {
+                "dtype": "float64",
+                "dimensions": [
+                    "grid_latitude"
+                ],
+                "size": 406,
+                "shape": [
+                    406
+                ],
+                "attrs": {
+                    "axis": "Y",
+                    "bounds": "grid_latitude_bnds",
+                    "units": "degrees",
+                    "standard_name": "grid_latitude"
+                }
+            },
+            "grid_latitude_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "grid_latitude",
+                    "bnds"
+                ],
+                "size": 812,
+                "shape": [
+                    406,
+                    2
+                ],
+                "attrs": {}
+            },
+            "grid_longitude": {
+                "dtype": "float64",
+                "dimensions": [
+                    "grid_longitude"
+                ],
+                "size": 418,
+                "shape": [
+                    418
+                ],
+                "attrs": {
+                    "axis": "X",
+                    "bounds": "grid_longitude_bnds",
+                    "units": "degrees",
+                    "standard_name": "grid_longitude"
+                }
+            },
+            "grid_longitude_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "grid_longitude",
+                    "bnds"
+                ],
+                "size": 836,
+                "shape": [
+                    418,
+                    2
+                ],
+                "attrs": {}
+            },
+            "ensemble_member_id": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "ensemble_member",
+                    "string27"
+                ],
+                "size": 27,
+                "shape": [
+                    1,
+                    27
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member_id"
+                }
+            },
+            "month_number": {
+                "dtype": "int32",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 3600,
+                "shape": [
+                    3600
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "month_number"
+                }
+            },
+            "year": {
+                "dtype": "int32",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 3600,
+                "shape": [
+                    3600
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "year"
+                }
+            },
+            "yyyymmdd": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "time",
+                    "string64"
+                ],
+                "size": 230400,
+                "shape": [
+                    3600,
+                    64
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "yyyymmdd"
+                }
+            }
+        },
+        "global_attrs": {
+            "collection": "land-rcm",
+            "contact": "ukcpproject@metoffice.gov.uk",
+            "creation_date": "2019-07-31T00:00:00",
+            "domain": "eur",
+            "frequency": "day",
+            "institution": "Met Office Hadley Centre (MOHC), FitzRoy Road, Exeter, Devon, EX1 3PB, UK.",
+            "institution_id": "MOHC",
+            "project": "UKCP18",
+            "references": "https://ukclimateprojections.metoffice.gov.uk",
+            "resolution": "12km",
+            "scenario": "rcp85",
+            "source": "UKCP18 regional realisation from a set of 12 limited-area Met Office Unified Model Global Atmosphere GA7 models at 12km resolution driven by perturbed variants of the global HadGEM3-GC3.05",
+            "title": "UKCP18 land projections - 12km regional climate model, relative humidity at 1.5m (%) over the UK for the RCP 8.5 scenario",
+            "version": "v20190731",
+            "Conventions": "CF-1.5"
+        },
+        "data": {
+            "time": [
+                "2000-06-22T12:00:00",
+                "2010-04-30T12:00:00"
+            ]
+        }
+    },
+    "pr_rcp85_land-rcm_uk_12km_07_seas-20y_200912-207911": {
+        "dir": "land-rcm/uk/12km/rcp85/07/pr/seas-20y/v20190731",
+        "fbase": "pr_rcp85_land-rcm_uk_12km_07_seas-20y_200912-207911",
+        "ext": "nc",
+        "dims": {
+            "ensemble_member": 1,
+            "time": 24,
+            "projection_y_coordinate": 112,
+            "projection_x_coordinate": 82,
+            "bnds": 2,
+            "string27": 27,
+            "string64": 64
+        },
+        "variables": {
+            "pr": {
+                "dtype": "float32",
+                "dimensions": [
+                    "ensemble_member",
+                    "time",
+                    "projection_y_coordinate",
+                    "projection_x_coordinate"
+                ],
+                "size": 220416,
+                "shape": [
+                    1,
+                    24,
+                    112,
+                    82
+                ],
+                "attrs": {
+                    "_FillValue": 1.0000000200408773e+20,
+                    "standard_name": "lwe_precipitation_rate",
+                    "long_name": "Precipitation rate",
+                    "units": "mm/day",
+                    "description": "Precipitation rate",
+                    "label_units": "mm/day",
+                    "plot_label": "Precipitation rate (mm/day)",
+                    "cell_methods": "time: mean",
+                    "grid_mapping": "transverse_mercator",
+                    "coordinates": "ensemble_member_id grid_latitude grid_longitude season year"
+                }
+            },
+            "transverse_mercator": {
+                "dtype": "int32",
+                "dimensions": [],
+                "size": 1,
+                "shape": [],
+                "attrs": {
+                    "grid_mapping_name": "transverse_mercator",
+                    "longitude_of_prime_meridian": 0.0,
+                    "semi_major_axis": 6377563.396,
+                    "semi_minor_axis": 6356256.909,
+                    "longitude_of_central_meridian": -2.0,
+                    "latitude_of_projection_origin": 49.0,
+                    "false_easting": 400000.0,
+                    "false_northing": -100000.0,
+                    "scale_factor_at_central_meridian": 0.9996012717
+                }
+            },
+            "ensemble_member": {
+                "dtype": "int32",
+                "dimensions": [
+                    "ensemble_member"
+                ],
+                "size": 1,
+                "shape": [
+                    1
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member"
+                }
+            },
+            "time": {
+                "dtype": "float64",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 24,
+                "shape": [
+                    24
+                ],
+                "attrs": {
+                    "axis": "T",
+                    "bounds": "time_bnds",
+                    "units": "hours since 1970-01-01 00:00:00",
+                    "standard_name": "time",
+                    "calendar": "360_day"
+                }
+            },
+            "time_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "time",
+                    "bnds"
+                ],
+                "size": 48,
+                "shape": [
+                    24,
+                    2
+                ],
+                "attrs": {}
+            },
+            "projection_y_coordinate": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_y_coordinate"
+                ],
+                "size": 112,
+                "shape": [
+                    112
+                ],
+                "attrs": {
+                    "axis": "Y",
+                    "bounds": "projection_y_coordinate_bnds",
+                    "units": "m",
+                    "standard_name": "projection_y_coordinate"
+                }
+            },
+            "projection_y_coordinate_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_y_coordinate",
+                    "bnds"
+                ],
+                "size": 224,
+                "shape": [
+                    112,
+                    2
+                ],
+                "attrs": {}
+            },
+            "projection_x_coordinate": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_x_coordinate"
+                ],
+                "size": 82,
+                "shape": [
+                    82
+                ],
+                "attrs": {
+                    "axis": "X",
+                    "bounds": "projection_x_coordinate_bnds",
+                    "units": "m",
+                    "standard_name": "projection_x_coordinate"
+                }
+            },
+            "projection_x_coordinate_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_x_coordinate",
+                    "bnds"
+                ],
+                "size": 164,
+                "shape": [
+                    82,
+                    2
+                ],
+                "attrs": {}
+            },
+            "ensemble_member_id": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "ensemble_member",
+                    "string27"
+                ],
+                "size": 27,
+                "shape": [
+                    1,
+                    27
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member_id"
+                }
+            },
+            "grid_latitude": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_y_coordinate",
+                    "projection_x_coordinate"
+                ],
+                "size": 9184,
+                "shape": [
+                    112,
+                    82
+                ],
+                "attrs": {
+                    "units": "degrees_north",
+                    "standard_name": "grid_latitude"
+                }
+            },
+            "grid_longitude": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_y_coordinate",
+                    "projection_x_coordinate"
+                ],
+                "size": 9184,
+                "shape": [
+                    112,
+                    82
+                ],
+                "attrs": {
+                    "units": "degrees_east",
+                    "standard_name": "grid_longitude"
+                }
+            },
+            "season": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "time",
+                    "string64"
+                ],
+                "size": 1536,
+                "shape": [
+                    24,
+                    64
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "season"
+                }
+            },
+            "year": {
+                "dtype": "int32",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 24,
+                "shape": [
+                    24
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "year"
+                }
+            }
+        },
+        "global_attrs": {
+            "collection": "land-rcm",
+            "contact": "ukcpproject@metoffice.gov.uk",
+            "creation_date": "2019-07-31T00:00:00",
+            "domain": "uk",
+            "frequency": "seas-20y",
+            "institution": "Met Office Hadley Centre (MOHC), FitzRoy Road, Exeter, Devon, EX1 3PB, UK.",
+            "institution_id": "MOHC",
+            "project": "UKCP18",
+            "references": "https://ukclimateprojections.metoffice.gov.uk",
+            "resolution": "12km",
+            "scenario": "rcp85",
+            "source": "UKCP18 regional realisation from a set of 12 limited-area Met Office Unified Model Global Atmosphere GA7 models at 12km resolution driven by perturbed variants of the global HadGEM3-GC3.05",
+            "title": "UKCP18 land projections - 12km regional climate model, precipitation rate (mm/day) over the UK for the RCP 8.5 scenario",
+            "version": "v20190731",
+            "Conventions": "CF-1.5"
+        },
+        "data": {
+            "time": [
+                "2019-04-29T00:00:00",
+                "2069-05-06T00:00:00"
+            ]
+        }
+    },
+    "tasmax_rcp85_land-rcm_uk_12km_09_mon-30y_198012-201011": {
+        "dir": "land-rcm/uk/12km/rcp85/09/tasmax/mon-30y/v20190731",
+        "fbase": "tasmax_rcp85_land-rcm_uk_12km_09_mon-30y_198012-201011",
+        "ext": "nc",
+        "dims": {
+            "ensemble_member": 1,
+            "time": 12,
+            "projection_y_coordinate": 112,
+            "projection_x_coordinate": 82,
+            "bnds": 2,
+            "string27": 27,
+            "string64": 64
+        },
+        "variables": {
+            "tasmax": {
+                "dtype": "float32",
+                "dimensions": [
+                    "ensemble_member",
+                    "time",
+                    "projection_y_coordinate",
+                    "projection_x_coordinate"
+                ],
+                "size": 110208,
+                "shape": [
+                    1,
+                    12,
+                    112,
+                    82
+                ],
+                "attrs": {
+                    "_FillValue": 1.0000000200408773e+20,
+                    "standard_name": "air_temperature",
+                    "long_name": "Maximum air temperature",
+                    "units": "degC",
+                    "description": "Maximum air temperature",
+                    "label_units": "\u00b0C",
+                    "plot_label": "Maximum air temperature at 1.5m (\u00b0C)",
+                    "cell_methods": "time: mean",
+                    "grid_mapping": "transverse_mercator",
+                    "coordinates": "ensemble_member_id grid_latitude grid_longitude month_number yyyymm"
+                }
+            },
+            "transverse_mercator": {
+                "dtype": "int32",
+                "dimensions": [],
+                "size": 1,
+                "shape": [],
+                "attrs": {
+                    "grid_mapping_name": "transverse_mercator",
+                    "longitude_of_prime_meridian": 0.0,
+                    "semi_major_axis": 6377563.396,
+                    "semi_minor_axis": 6356256.909,
+                    "longitude_of_central_meridian": -2.0,
+                    "latitude_of_projection_origin": 49.0,
+                    "false_easting": 400000.0,
+                    "false_northing": -100000.0,
+                    "scale_factor_at_central_meridian": 0.9996012717
+                }
+            },
+            "ensemble_member": {
+                "dtype": "int32",
+                "dimensions": [
+                    "ensemble_member"
+                ],
+                "size": 1,
+                "shape": [
+                    1
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member"
+                }
+            },
+            "time": {
+                "dtype": "float64",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 12,
+                "shape": [
+                    12
+                ],
+                "attrs": {
+                    "axis": "T",
+                    "bounds": "time_bnds",
+                    "units": "hours since 1970-01-01 00:00:00",
+                    "standard_name": "time",
+                    "calendar": "360_day"
+                }
+            },
+            "time_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "time",
+                    "bnds"
+                ],
+                "size": 24,
+                "shape": [
+                    12,
+                    2
+                ],
+                "attrs": {}
+            },
+            "projection_y_coordinate": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_y_coordinate"
+                ],
+                "size": 112,
+                "shape": [
+                    112
+                ],
+                "attrs": {
+                    "axis": "Y",
+                    "bounds": "projection_y_coordinate_bnds",
+                    "units": "m",
+                    "standard_name": "projection_y_coordinate"
+                }
+            },
+            "projection_y_coordinate_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_y_coordinate",
+                    "bnds"
+                ],
+                "size": 224,
+                "shape": [
+                    112,
+                    2
+                ],
+                "attrs": {}
+            },
+            "projection_x_coordinate": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_x_coordinate"
+                ],
+                "size": 82,
+                "shape": [
+                    82
+                ],
+                "attrs": {
+                    "axis": "X",
+                    "bounds": "projection_x_coordinate_bnds",
+                    "units": "m",
+                    "standard_name": "projection_x_coordinate"
+                }
+            },
+            "projection_x_coordinate_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_x_coordinate",
+                    "bnds"
+                ],
+                "size": 164,
+                "shape": [
+                    82,
+                    2
+                ],
+                "attrs": {}
+            },
+            "ensemble_member_id": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "ensemble_member",
+                    "string27"
+                ],
+                "size": 27,
+                "shape": [
+                    1,
+                    27
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member_id"
+                }
+            },
+            "grid_latitude": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_y_coordinate",
+                    "projection_x_coordinate"
+                ],
+                "size": 9184,
+                "shape": [
+                    112,
+                    82
+                ],
+                "attrs": {
+                    "units": "degrees_north",
+                    "standard_name": "grid_latitude"
+                }
+            },
+            "grid_longitude": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_y_coordinate",
+                    "projection_x_coordinate"
+                ],
+                "size": 9184,
+                "shape": [
+                    112,
+                    82
+                ],
+                "attrs": {
+                    "units": "degrees_east",
+                    "standard_name": "grid_longitude"
+                }
+            },
+            "month_number": {
+                "dtype": "int32",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 12,
+                "shape": [
+                    12
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "month_number"
+                }
+            },
+            "yyyymm": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "time",
+                    "string64"
+                ],
+                "size": 768,
+                "shape": [
+                    12,
+                    64
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "yyyymm"
+                }
+            }
+        },
+        "global_attrs": {
+            "collection": "land-rcm",
+            "contact": "ukcpproject@metoffice.gov.uk",
+            "creation_date": "2019-07-31T00:00:00",
+            "domain": "uk",
+            "frequency": "mon-30y",
+            "institution": "Met Office Hadley Centre (MOHC), FitzRoy Road, Exeter, Devon, EX1 3PB, UK.",
+            "institution_id": "MOHC",
+            "project": "UKCP18",
+            "references": "https://ukclimateprojections.metoffice.gov.uk",
+            "resolution": "12km",
+            "scenario": "rcp85",
+            "source": "UKCP18 regional realisation from a set of 12 limited-area Met Office Unified Model Global Atmosphere GA7 models at 12km resolution driven by perturbed variants of the global HadGEM3-GC3.05",
+            "title": "UKCP18 land projections - 12km regional climate model, maximum air temperature at 1.5m (\u00b0c) over the UK for the RCP 8.5 scenario",
+            "version": "v20190731",
+            "Conventions": "CF-1.5"
+        },
+        "data": {
+            "time": [
+                "1995-08-03T00:00:00",
+                "1996-06-28T00:00:00"
+            ]
+        }
+    },
+    "vas_rcp85_land-rcm_uk_12km_12_seas-20y_198012-200011": {
+        "dir": "land-rcm/uk/12km/rcp85/12/vas/seas-20y/v20190731",
+        "fbase": "vas_rcp85_land-rcm_uk_12km_12_seas-20y_198012-200011",
+        "ext": "nc",
+        "dims": {
+            "ensemble_member": 1,
+            "time": 4,
+            "projection_y_coordinate": 112,
+            "projection_x_coordinate": 82,
+            "bnds": 2,
+            "string27": 27,
+            "string64": 64
+        },
+        "variables": {
+            "vas": {
+                "dtype": "float32",
+                "dimensions": [
+                    "ensemble_member",
+                    "time",
+                    "projection_y_coordinate",
+                    "projection_x_coordinate"
+                ],
+                "size": 36736,
+                "shape": [
+                    1,
+                    4,
+                    112,
+                    82
+                ],
+                "attrs": {
+                    "_FillValue": 1.0000000200408773e+20,
+                    "standard_name": "northward_wind",
+                    "long_name": "Northward wind component",
+                    "units": "m s-1",
+                    "description": "Northward wind",
+                    "label_units": "m s-1",
+                    "plot_label": "Northward wind at 10m (m s-1)",
+                    "cell_methods": "time: mean",
+                    "grid_mapping": "transverse_mercator",
+                    "coordinates": "ensemble_member_id grid_latitude grid_longitude season year"
+                }
+            },
+            "transverse_mercator": {
+                "dtype": "int32",
+                "dimensions": [],
+                "size": 1,
+                "shape": [],
+                "attrs": {
+                    "grid_mapping_name": "transverse_mercator",
+                    "longitude_of_prime_meridian": 0.0,
+                    "semi_major_axis": 6377563.396,
+                    "semi_minor_axis": 6356256.909,
+                    "longitude_of_central_meridian": -2.0,
+                    "latitude_of_projection_origin": 49.0,
+                    "false_easting": 400000.0,
+                    "false_northing": -100000.0,
+                    "scale_factor_at_central_meridian": 0.9996012717
+                }
+            },
+            "ensemble_member": {
+                "dtype": "int32",
+                "dimensions": [
+                    "ensemble_member"
+                ],
+                "size": 1,
+                "shape": [
+                    1
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member"
+                }
+            },
+            "time": {
+                "dtype": "float64",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 4,
+                "shape": [
+                    4
+                ],
+                "attrs": {
+                    "axis": "T",
+                    "bounds": "time_bnds",
+                    "units": "hours since 1970-01-01 00:00:00",
+                    "standard_name": "time",
+                    "calendar": "360_day"
+                }
+            },
+            "time_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "time",
+                    "bnds"
+                ],
+                "size": 8,
+                "shape": [
+                    4,
+                    2
+                ],
+                "attrs": {}
+            },
+            "projection_y_coordinate": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_y_coordinate"
+                ],
+                "size": 112,
+                "shape": [
+                    112
+                ],
+                "attrs": {
+                    "axis": "Y",
+                    "bounds": "projection_y_coordinate_bnds",
+                    "units": "m",
+                    "standard_name": "projection_y_coordinate"
+                }
+            },
+            "projection_y_coordinate_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_y_coordinate",
+                    "bnds"
+                ],
+                "size": 224,
+                "shape": [
+                    112,
+                    2
+                ],
+                "attrs": {}
+            },
+            "projection_x_coordinate": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_x_coordinate"
+                ],
+                "size": 82,
+                "shape": [
+                    82
+                ],
+                "attrs": {
+                    "axis": "X",
+                    "bounds": "projection_x_coordinate_bnds",
+                    "units": "m",
+                    "standard_name": "projection_x_coordinate"
+                }
+            },
+            "projection_x_coordinate_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_x_coordinate",
+                    "bnds"
+                ],
+                "size": 164,
+                "shape": [
+                    82,
+                    2
+                ],
+                "attrs": {}
+            },
+            "ensemble_member_id": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "ensemble_member",
+                    "string27"
+                ],
+                "size": 27,
+                "shape": [
+                    1,
+                    27
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member_id"
+                }
+            },
+            "grid_latitude": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_y_coordinate",
+                    "projection_x_coordinate"
+                ],
+                "size": 9184,
+                "shape": [
+                    112,
+                    82
+                ],
+                "attrs": {
+                    "units": "degrees_north",
+                    "standard_name": "grid_latitude"
+                }
+            },
+            "grid_longitude": {
+                "dtype": "float64",
+                "dimensions": [
+                    "projection_y_coordinate",
+                    "projection_x_coordinate"
+                ],
+                "size": 9184,
+                "shape": [
+                    112,
+                    82
+                ],
+                "attrs": {
+                    "units": "degrees_east",
+                    "standard_name": "grid_longitude"
+                }
+            },
+            "season": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "time",
+                    "string64"
+                ],
+                "size": 256,
+                "shape": [
+                    4,
+                    64
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "season"
+                }
+            },
+            "year": {
+                "dtype": "int32",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 4,
+                "shape": [
+                    4
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "year"
+                }
+            }
+        },
+        "global_attrs": {
+            "collection": "land-rcm",
+            "contact": "ukcpproject@metoffice.gov.uk",
+            "creation_date": "2019-07-31T00:00:00",
+            "domain": "uk",
+            "frequency": "seas-20y",
+            "institution": "Met Office Hadley Centre (MOHC), FitzRoy Road, Exeter, Devon, EX1 3PB, UK.",
+            "institution_id": "MOHC",
+            "project": "UKCP18",
+            "references": "https://ukclimateprojections.metoffice.gov.uk",
+            "resolution": "12km",
+            "scenario": "rcp85",
+            "source": "UKCP18 regional realisation from a set of 12 limited-area Met Office Unified Model Global Atmosphere GA7 models at 12km resolution driven by perturbed variants of the global HadGEM3-GC3.05",
+            "title": "UKCP18 land projections - 12km regional climate model, northward wind at 10m (m s-1) over the UK for the RCP 8.5 scenario",
+            "version": "v20190731",
+            "Conventions": "CF-1.5"
+        },
+        "data": {
+            "time": [
+                "1990-09-28T00:00:00",
+                "1991-06-25T00:00:00"
+            ]
+        }
+    },
+    "uas_rcp85_land-rcm_uk_region_01_mon-20y_198012-200011": {
+        "dir": "land-rcm/uk/region/rcp85/01/uas/mon-20y/v20181122",
+        "fbase": "uas_rcp85_land-rcm_uk_region_01_mon-20y_198012-200011",
+        "ext": "nc",
+        "dims": {
+            "ensemble_member": 1,
+            "time": 12,
+            "region": 16,
+            "bnds": 2,
+            "string24": 24,
+            "string27": 27,
+            "string64": 64
+        },
+        "variables": {
+            "uas": {
+                "dtype": "float32",
+                "dimensions": [
+                    "ensemble_member",
+                    "time",
+                    "region"
+                ],
+                "size": 192,
+                "shape": [
+                    1,
+                    12,
+                    16
+                ],
+                "attrs": {
+                    "standard_name": "eastward_wind",
+                    "long_name": "Eastward wind component",
+                    "units": "m s-1",
+                    "description": "Eastward wind",
+                    "label_units": "m s-1",
+                    "plot_label": "Eastward wind at 10m (m s-1)",
+                    "cell_methods": "time: mean",
+                    "coordinates": "ensemble_member_id geo_region month_number yyyymm"
+                }
+            },
+            "ensemble_member": {
+                "dtype": "int32",
+                "dimensions": [
+                    "ensemble_member"
+                ],
+                "size": 1,
+                "shape": [
+                    1
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member"
+                }
+            },
+            "time": {
+                "dtype": "float64",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 12,
+                "shape": [
+                    12
+                ],
+                "attrs": {
+                    "axis": "T",
+                    "bounds": "time_bnds",
+                    "units": "hours since 1970-01-01 00:00:00",
+                    "standard_name": "time",
+                    "calendar": "360_day"
+                }
+            },
+            "time_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "time",
+                    "bnds"
+                ],
+                "size": 24,
+                "shape": [
+                    12,
+                    2
+                ],
+                "attrs": {}
+            },
+            "region": {
+                "dtype": "int32",
+                "dimensions": [
+                    "region"
+                ],
+                "size": 16,
+                "shape": [
+                    16
+                ],
+                "attrs": {
+                    "units": "1",
+                    "standard_name": "region"
+                }
+            },
+            "geo_region": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "region",
+                    "string24"
+                ],
+                "size": 384,
+                "shape": [
+                    16,
+                    24
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "Region"
+                }
+            },
+            "ensemble_member_id": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "ensemble_member",
+                    "string27"
+                ],
+                "size": 27,
+                "shape": [
+                    1,
+                    27
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member_id"
+                }
+            },
+            "month_number": {
+                "dtype": "int32",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 12,
+                "shape": [
+                    12
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "month_number"
+                }
+            },
+            "yyyymm": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "time",
+                    "string64"
+                ],
+                "size": 768,
+                "shape": [
+                    12,
+                    64
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "yyyymm"
+                }
+            }
+        },
+        "global_attrs": {
+            "collection": "land-rcm",
+            "contact": "ukcpproject@metoffice.gov.uk",
+            "creation_date": "2018-11-22T23:15:05",
+            "domain": "uk",
+            "frequency": "mon-20y",
+            "institution": "Met Office Hadley Centre (MOHC), FitzRoy Road, Exeter, Devon, EX1 3PB, UK.",
+            "institution_id": "MOHC",
+            "project": "UKCP18",
+            "references": "https://ukclimateprojections.metoffice.gov.uk",
+            "resolution": "region",
+            "scenario": "rcp85",
+            "source": "UKCP18 regional realisation from a set of 12 limited-area Met Office Unified Model Global Atmosphere GA7 models at 12km resolution driven by perturbed variants of the global HadGEM3-GC3.05",
+            "title": "UKCP18 land projections - 12km regional climate model, eastward wind at 10m (m s-1) over the UK for the RCP 8.5 scenario",
+            "version": "v20181122",
+            "Conventions": "CF-1.5"
+        },
+        "data": {
+            "time": [
+                "1990-08-29T00:00:00",
+                "1991-07-25T00:00:00"
+            ]
+        }
+    },
+    "snw_rcp85_land-rcm_uk_region_05_ann-30y_200912-207911": {
+        "dir": "land-rcm/uk/region/rcp85/05/snw/ann-30y/v20190930",
+        "fbase": "snw_rcp85_land-rcm_uk_region_05_ann-30y_200912-207911",
+        "ext": "nc",
+        "dims": {
+            "time": 5,
+            "ensemble_member": 1,
+            "region": 16,
+            "bnds": 2,
+            "string24": 24,
+            "string27": 27
+        },
+        "variables": {
+            "snw": {
+                "dtype": "float32",
+                "dimensions": [
+                    "time",
+                    "ensemble_member",
+                    "region"
+                ],
+                "size": 80,
+                "shape": [
+                    5,
+                    1,
+                    16
+                ],
+                "attrs": {
+                    "_FillValue": 1.0000000200408773e+20,
+                    "standard_name": "surface_snow_amount",
+                    "long_name": "Surface Snow Amount ",
+                    "units": "mm",
+                    "description": "Amount of snow on the ground",
+                    "label_units": "mm",
+                    "plot_label": "Surface snow amount",
+                    "cell_methods": "time: mean",
+                    "coordinates": "ensemble_member_id geo_region year"
+                }
+            },
+            "time": {
+                "dtype": "float64",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 5,
+                "shape": [
+                    5
+                ],
+                "attrs": {
+                    "axis": "T",
+                    "bounds": "time_bnds",
+                    "units": "hours since 1970-01-01 00:00:00",
+                    "standard_name": "time",
+                    "calendar": "360_day"
+                }
+            },
+            "time_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "time",
+                    "bnds"
+                ],
+                "size": 10,
+                "shape": [
+                    5,
+                    2
+                ],
+                "attrs": {}
+            },
+            "ensemble_member": {
+                "dtype": "int32",
+                "dimensions": [
+                    "ensemble_member"
+                ],
+                "size": 1,
+                "shape": [
+                    1
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member"
+                }
+            },
+            "region": {
+                "dtype": "int32",
+                "dimensions": [
+                    "region"
+                ],
+                "size": 16,
+                "shape": [
+                    16
+                ],
+                "attrs": {
+                    "units": "1",
+                    "standard_name": "region"
+                }
+            },
+            "geo_region": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "region",
+                    "string24"
+                ],
+                "size": 384,
+                "shape": [
+                    16,
+                    24
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "Region"
+                }
+            },
+            "ensemble_member_id": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "ensemble_member",
+                    "string27"
+                ],
+                "size": 27,
+                "shape": [
+                    1,
+                    27
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member_id"
+                }
+            },
+            "year": {
+                "dtype": "int32",
+                "dimensions": [
+                    "time"
+                ],
+                "size": 5,
+                "shape": [
+                    5
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "year"
+                }
+            }
+        },
+        "global_attrs": {
+            "collection": "land-rcm",
+            "contact": "ukcpproject@metoffice.gov.uk",
+            "creation_date": "2019-09-30T00:00:00",
+            "domain": "uk",
+            "frequency": "ann-30y",
+            "institution": "Met Office Hadley Centre (MOHC), FitzRoy Road, Exeter, Devon, EX1 3PB, UK.",
+            "institution_id": "MOHC",
+            "project": "UKCP18",
+            "references": "https://ukclimateprojections.metoffice.gov.uk",
+            "resolution": "region",
+            "scenario": "rcp85",
+            "source": "UKCP18 regional realisation from a set of 12 limited-area Met Office Unified Model Global Atmosphere GA7 models at 12km resolution driven by perturbed variants of the global HadGEM3-GC3.05",
+            "title": "UKCP18 land projections - 12km regional climate model, surface snow amount over the UK for the RCP 8.5 scenario",
+            "version": "v20190930",
+            "Conventions": "CF-1.5"
+        },
+        "data": {
+            "time": [
+                "2024-08-30T00:00:00",
+                "2064-02-02T00:00:00"
+            ]
+        }
+    },
+    "sfcWind_rcp85_land-rcm_uk_river_06_ann-30y_198012-201011": {
+        "dir": "land-rcm/uk/river/rcp85/06/sfcWind/ann-30y/v20181122",
+        "fbase": "sfcWind_rcp85_land-rcm_uk_river_06_ann-30y_198012-201011",
+        "ext": "nc",
+        "dims": {
+            "ensemble_member": 1,
+            "region": 23,
+            "string24": 24,
+            "string27": 27,
+            "bnds": 2
+        },
+        "variables": {
+            "sfcWind": {
+                "dtype": "float32",
+                "dimensions": [
+                    "ensemble_member",
+                    "region"
+                ],
+                "size": 23,
+                "shape": [
+                    1,
+                    23
+                ],
+                "attrs": {
+                    "standard_name": "wind_speed",
+                    "long_name": "Wind speed at 10m",
+                    "units": "m s-1",
+                    "description": "Wind speed",
+                    "label_units": "m s-1",
+                    "plot_label": "Wind speed at 10m (m s-1)",
+                    "cell_methods": "time: mean",
+                    "coordinates": "ensemble_member_id geo_region time year"
+                }
+            },
+            "ensemble_member": {
+                "dtype": "int32",
+                "dimensions": [
+                    "ensemble_member"
+                ],
+                "size": 1,
+                "shape": [
+                    1
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member"
+                }
+            },
+            "region": {
+                "dtype": "int32",
+                "dimensions": [
+                    "region"
+                ],
+                "size": 23,
+                "shape": [
+                    23
+                ],
+                "attrs": {
+                    "units": "1",
+                    "standard_name": "region"
+                }
+            },
+            "geo_region": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "region",
+                    "string24"
+                ],
+                "size": 552,
+                "shape": [
+                    23,
+                    24
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "River"
+                }
+            },
+            "ensemble_member_id": {
+                "dtype": "bytes8",
+                "dimensions": [
+                    "ensemble_member",
+                    "string27"
+                ],
+                "size": 27,
+                "shape": [
+                    1,
+                    27
+                ],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "ensemble_member_id"
+                }
+            },
+            "time": {
+                "dtype": "float64",
+                "dimensions": [],
+                "size": 1,
+                "shape": [],
+                "attrs": {
+                    "bounds": "time_bnds",
+                    "units": "hours since 1970-01-01 00:00:00",
+                    "standard_name": "time",
+                    "calendar": "360_day"
+                }
+            },
+            "time_bnds": {
+                "dtype": "float64",
+                "dimensions": [
+                    "bnds"
+                ],
+                "size": 2,
+                "shape": [
+                    2
+                ],
+                "attrs": {}
+            },
+            "year": {
+                "dtype": "int32",
+                "dimensions": [],
+                "size": 1,
+                "shape": [],
+                "attrs": {
+                    "units": "1",
+                    "long_name": "year"
+                }
+            }
+        },
+        "global_attrs": {
+            "collection": "land-rcm",
+            "contact": "ukcpproject@metoffice.gov.uk",
+            "creation_date": "2018-11-22T23:02:45",
+            "domain": "uk",
+            "frequency": "ann-30y",
+            "institution": "Met Office Hadley Centre (MOHC), FitzRoy Road, Exeter, Devon, EX1 3PB, UK.",
+            "institution_id": "MOHC",
+            "project": "UKCP18",
+            "references": "https://ukclimateprojections.metoffice.gov.uk",
+            "resolution": "river",
+            "scenario": "rcp85",
+            "source": "UKCP18 regional realisation from a set of 12 limited-area Met Office Unified Model Global Atmosphere GA7 models at 12km resolution driven by perturbed variants of the global HadGEM3-GC3.05",
+            "title": "UKCP18 land projections - 12km regional climate model, wind speed at 10m (m s-1) over the UK for the RCP 8.5 scenario",
+            "version": "v20181122",
+            "Conventions": "CF-1.5"
+        },
+        "data": {
+            "time": [
+                "1996-01-30T00:00:00",
+                "1996-01-30T00:00:00"
+            ]
+        }
+    }
+}
