@@ -44,7 +44,7 @@ The way RAG works is as follows:
   - Encode those into vector form using an Embedding Model
   - Put them into a Vector Database
 - **When a query is received:**
-  - Encode the query into vector form unsing the same Embedding Model
+  - Encode the query into vector form using the same Embedding Model
   - Find the most relevant _chunks_ from the trusted information, using _cosine similarity_ in vector space
   - Send a request to a Large Language Model (LLM, such as ChatGPT or other) which includes:
     - A prompt to instruct it to use the _chunks_ provided as its primary source
