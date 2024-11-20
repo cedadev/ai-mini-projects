@@ -1,0 +1,3 @@
+Write a function that receives in two python objects and adds them. Return the result.
+Write a function that receives any number of lists, and returns sorted list that is the intersection of them.
+Write a function that takes any number of arguments, and randomly returns the name of a dog.
