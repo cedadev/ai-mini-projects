@@ -92,7 +92,7 @@ def get_file_dict(f):
                                "shape": tuple(int(i) for i in v.shape), 
                                "attrs": coerce_values(v.__dict__)} for v in ds.variables.values()}
     
-    d["global_attrs"] = coerce_values(ds.__dict__)
+    d["global_attrs"] = coerce_values(ds.__dict__)    
     d["data"] = {v.name: get_limits(v) for v in ds.variables.values() if v.name in known_coord_vars and len(v.shape) < 2}
 
     times = get_times(ds["time"]) if "time" in ds.variables else None

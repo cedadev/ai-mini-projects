@@ -7,7 +7,7 @@ from collections.abc import Mapping
 import click
 
 from config import (encdir, zpad)
-from _utils import parse_to_ints, sort_as_floats
+from _utils import parse_to_ints, sort_as_floats, combine_without_duplicates
 
 
 def merge_json_structures_with_deduplication(json_list):
@@ -22,24 +22,13 @@ def merge_json_structures_with_deduplication(json_list):
     Returns:
         dict: Merged JSON-like structure with deduplicated arrays.
     """
-    def combine_without_duplicates(*seqs):
-        """Helper function to remove duplicates. Avoiding sets because contents
-        might be (unhashable) lists."""
-        result = seqs[0]
-        for seq in seqs[1:]:
-            for item in seq:
-                if item not in result:
-                    result.append(item)
-
-        return result
-
     def merge_dicts(d1, d2):
         """Helper function to merge two dictionaries."""
         for key, value in d2.items():
             if key in d1:
                 if isinstance(d1[key], list) and isinstance(value, list):
                     # Merge lists and remove duplicates
-                    d1[key] = combine_without_duplicates(d1[key], value) #list(set(d1[key] + value))
+                    d1[key] = combine_without_duplicates(d1[key], value)
                 elif isinstance(d1[key], dict) and isinstance(value, dict):
                     merge_dicts(d1[key], value)
                 else:

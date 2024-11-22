@@ -15,3 +15,26 @@ def parse_to_ints(s):
 def sort_as_floats(seq):
     "Handles cases where some values are strings."
     return [value for _, value in sorted({float(x): x for x in seq}.items())]
+
+
+def combine_without_duplicates(*seqs):
+    """Helper function to remove duplicates. Avoiding sets because contents
+    might be (unhashable) lists."""
+    result = seqs[0]
+    for seq in seqs[1:]:
+        for item in seq:
+            if item not in result:
+                result.append(item)
+
+    return result
+
+
+def unique(seq):
+    """Remove any duplicate entries, without using sets which cannot include
+    (unhashable) lists."""
+    result = []
+    for item in seq:
+        if item not in result:
+            result.append(item)
+
+    return result

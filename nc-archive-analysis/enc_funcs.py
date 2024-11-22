@@ -1,6 +1,7 @@
 from collections import defaultdict, deque
 
 from config import regex_int
+from _utils import sort_as_floats
 
 
 def lookup_item(lookup, x):
@@ -8,7 +9,7 @@ def lookup_item(lookup, x):
     if isinstance(x, dict) and lookup in x:
         return x[lookup]
 
-    # Try list index lookup
+    # Try list index lookup for integer lookups
     if regex_int.match(lookup) and len(x) > int(lookup):
         return [x[int(lookup)]]
     
@@ -27,12 +28,21 @@ def merge_dicts(d1, key, d2):
 
 def update_encodings(encodings, d):
     "Add content of dict `d` to encodings dict. Returns None."
+    def _lookup_data_keys(d):
+        """The "data" section contains any number of variables, so look them up.
+        Then add ".0" and ".-1" to the key for index lookups."""
+        data_keys = []
+        for vkey in d.get("data", []):
+            data_keys.extend([f"data.{vkey}.{idx}" for idx in ("0", "-1")])
+
+        return data_keys
+
     # Simple list encodings
     enc_types = [
         # scalars
         (lambda x: [x], ["nc_format"]),
         # lists - None
-        (lambda x: x, ["data.time.0", "data.time.-1"]),
+        (lambda x: x, [_lookup_data_keys]), ##["data.time.0", "data.time.-1"]),
         # dict keys
         (lambda x: x.keys(), ["dims"]),
         # dict expansions - depth: 1
@@ -78,19 +88,26 @@ def update_encodings(encodings, d):
                                 merge_dicts(encodings[enc][key], subkey, d[enc][key])
                             
             else:
-                # if "." found in list then recursively access it
-                lookups = deque(enc.split("."))
-                values = None
+                # If enc is a function, call it
+                if callable(enc):
+                    keys = enc(d)
+                else:
+                    keys = [enc]
 
-                while lookups:
-                    lookup = lookups.popleft()
-                    values = lookup_item(lookup, values) if values is not None else lookup_item(lookup, d)
+                for enc in keys:
+                    # if "." found in list then recursively access it
+                    lookups = deque(enc.split("."))
+                    values = None
 
-                    if not values:
-                        break
-                    
-                values = formatter(values)
-                encodings[enc].update(set(values))
+                    while lookups:
+                        lookup = lookups.popleft()
+                        values = lookup_item(lookup, values) if values is not None else lookup_item(lookup, d)
+
+                        if not values:
+                            break
+                        
+                    values = formatter(values)
+                    encodings[enc].update(set(values))
 
 
 def add_sorted_lists(d, key, value):

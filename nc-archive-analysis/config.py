@@ -1,7 +1,7 @@
 import re
 
 # Global configs
-known_coord_vars = "longitude|latitude|lon|lat|projection_y_coordinate|projection_x_coordinate".split("|")
+known_coord_vars = "grid_longitude|grid_latitude|longitude|latitude|lon|lat|projection_y_coordinate|projection_x_coordinate|geo_region|ensemble_member".split("|")
 workdir = "/gws/pw/j07/ukcp18/ai-astephen"
 outdir = f"{workdir}/outputs"
 encdir = f"{workdir}/encodings"
