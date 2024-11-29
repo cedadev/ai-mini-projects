@@ -18,6 +18,10 @@ We want to answer these questions:
 - [ ] Extracting the vocabularies is quirky:
   - for "variables": we need an even deeper merge than the current merge_dicts() at depth: 2
     - probably need to go to depth: 3
+- [ ] What about when 2 files exist with different time defs in fname: YYYYMM AND YYYYMMDD ???
+ - How would we identify they are different?
+ - Need to generalise the date time when parsing?
+ - Or maybe check on other fields would say they are identical - when using start and end from inside file
 
 ## Creating a training dataset
 
@@ -91,7 +95,7 @@ $ scp /tmp/ukcp-filelist.txt HERE:random-filelist.txt
 $ for i in $(seq 1 712) ; do sbatch -p short-serial -t 03:00:00 \
      -o /gws/pw/j07/ukcp18/ai-astephen/lotus-outputs/${i}.out \
      -e /gws/pw/j07/ukcp18/ai-astephen/lotus-outputs/${i}.err \
-     $PWD/extract.py -b ${i} ; done
+     $PWD/wrap_extract.sh -b ${i} ; done
 ```
 
 Some checks to see they all worked:
