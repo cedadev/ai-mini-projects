@@ -1,0 +1,4 @@
+export PINECONE_API_KEY=
+export OPENAI_API_KEY=
+export APP_PASSWORD=
+export CHAINLIT_AUTH_SECRET=
