@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
-# Read in the JSON contents and tranform into DataFrame(s), and write to CSV
+# Read in the JSON contents and transform into DataFrame(s), and write to CSV
 
-import os
 import json
+from pathlib import Path
+from typing import List, Optional
 
 import pandas as pd
 import click
@@ -11,17 +12,27 @@ from netCDF4 import Dataset, num2date
 
 from config import known_coord_vars, outdir, tmpdir, columns, LATEST
 
-for dr in (outdir, tmpdir):
-    if not os.path.isdir(dr):
-        os.makedirs(dr)
+for dr in (Path(outdir), Path(tmpdir)):
+    dr.mkdir(parents=True, exist_ok=True)
 
 
-def transform_json_to_csv(json_path, latest_only=False, verbose=False, overwrite=False):
-    # Check if already written and overwrite is False
-    json_id = os.path.basename(json_path).split(".")[0]
-    tmpcsv = f"{tmpdir}/{json_id}.csv"
+def transform_json_to_csv(json_path: Path, latest_only: bool = False, verbose: bool = False, overwrite: bool = False) -> Path:
+    """
+    Transform a JSON file to a temporary CSV file.
 
-    if not overwrite and os.path.isfile(tmpcsv):
+    Args:
+        json_path (Path): The path to the JSON file.
+        latest_only (bool): Flag to only include the latest records.
+        verbose (bool): Flag to enable verbose output.
+        overwrite (bool): Flag to overwrite existing temporary CSV files.
+
+    Returns:
+        Path: The path to the temporary CSV file.
+    """
+    json_id = json_path.stem
+    tmpcsv = Path(tmpdir) / f"{json_id}.csv"
+
+    if not overwrite and tmpcsv.is_file():
         return tmpcsv
 
     # Read the contents from the JSON file
@@ -54,15 +65,23 @@ def transform_json_to_csv(json_path, latest_only=False, verbose=False, overwrite
     return tmpcsv
 
 
-def transform(max_files, latest_only=False, overwrite=False):
-    json_files = sorted([os.path.join(outdir, f) for f in os.listdir(outdir)])[:max_files]
+def transform(max_files: int, latest_only: bool = False, overwrite: bool = False) -> None:
+    """
+    Transform multiple JSON files into a single CSV file.
+
+    Args:
+        max_files (int): Maximum number of JSON files to process.
+        latest_only (bool): Flag to only include the latest records.
+        overwrite (bool): Flag to overwrite existing temporary CSV files.
+    """
+    json_files = sorted(Path(outdir).glob("*.json"))[:max_files]
 
     csvs = []
     for json_file in json_files:
         csvs.append(transform_json_to_csv(json_file, latest_only, overwrite))
 
     print(f"[INFO] Merging {len(csvs)} CSV files.")
-    final_csv = f"{outdir}/nc_inventory.csv"
+    final_csv = Path(outdir) / "nc_inventory.csv"
 
     dfs = [pd.read_csv(csv) for csv in csvs]
     df = pd.concat(dfs)
@@ -78,8 +97,15 @@ def transform(max_files, latest_only=False, overwrite=False):
               help="Flag to only include files under the `latest` directories.")
 @click.option('-O', '--overwrite', is_flag=True, show_default=True, default=False,
               help="Flag to overwrite any previously written temporary CSV files.")
-def main(max_files, latest_only, overwrite):
+def main(max_files: int, latest_only: bool, overwrite: bool) -> None:
+    """
+    Main entry point for the script.
 
+    Args:
+        max_files (int): Maximum number of JSON files to process.
+        latest_only (bool): Flag to only include the latest records.
+        overwrite (bool): Flag to overwrite existing temporary CSV files.
+    """
     N = max_files if max_files > 0 else "ALL"
     print(f"Transforming {N} JSON files.")
     transform(max_files=max_files, latest_only=latest_only, overwrite=overwrite)
