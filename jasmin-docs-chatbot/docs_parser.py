@@ -1,4 +1,5 @@
 import os
+import json
 import requests
 from bs4 import BeautifulSoup
 
@@ -10,6 +11,11 @@ GIT_REPO_URL = "https://github.com/cedadev/jasmin-help-hugo-hinode"
 GIT_REPO_PATH = "./jasmin-help-hugo-hinode"
 CSV_PATH = "./ceda_jasmin_docs.csv"
 CEDA_DOCS_PATH = "./ceda-docs-2024-10-25"
+
+# MOLES related variables
+moles_key_map = {"time": "time_period", "phenomena": "variables",
+           "projects": "associated_projects", "bbox": "bounding_box"}
+moles_key_order = ["title", "uuid", "abstract", "keywords", "time", "bbox", "phenomena", "projects"]
 
 
 def clone_repo(url=GIT_REPO_URL, path=GIT_REPO_PATH, force=False):
@@ -117,6 +123,7 @@ def parse_md_file_jasmin(file_path, docs_url="https://help.jasmin.ac.uk"):
 
 
 def resolve_ceda_docs_search_url(title):
+    "Resolves a URL from the CEDA Docs content, based on the title."
     search_url = "https://help.ceda.ac.uk/search?collectionId=564b4f2490336002f86de436&query="
     url = search_url + "+".join(title.split())
     resp = requests.get(url)
@@ -180,20 +187,8 @@ def parse_md_file_cedadocs(file_path, docs_url="https://help.ceda.ac.uk"):
     current_section = None
 
     in_code_block = False
-#    triple_dash_count = 0
 
     for line in lines:
-#        if line.strip() == "---":
-#            triple_dash_count += 1
-#            continue
-
-#        if triple_dash_count == 1 and line.startswith("title:"):
-#            page_title = line.split(":")[1].strip()
-#            continue
-
-#        if triple_dash_count < 2:
-#            continue
-
         if not line.strip():
             continue
 
@@ -219,6 +214,27 @@ def parse_md_file_cedadocs(file_path, docs_url="https://help.ceda.ac.uk"):
     return sections
 
 
+def package_moles_record(rec):
+    "Repackage a MOLES observation dictionary, ready for putting into DataFrame."
+    uuid = rec["uuid"]
+    title = f"Catalogue record: {uuid}"
+    page_url = f"https://catalogue.ceda.ac.uk/uuid/{uuid}"
+
+    # Construct content - with ordered keys and pretty-printed
+    content = {moles_key_map.get(key, key): rec[key] for key in moles_key_order}
+    content = json.dumps(content, indent=2, sort_keys=False)
+    return [title, content, page_url]
+
+
+def parse_moles_records(moles_json="moles.json"):
+    "Parse MOLES records and return a list of [[title, content, page_url]]."
+    print(f"Loading MOLES data from: {moles_json}")
+    data = json.load(open(moles_json))
+    print(f"Parsed {len(data)} files.")
+    sections = [package_moles_record(rec) for rec in data]
+    return sections
+
+
 def parse_docs(git_repo_url=GIT_REPO_URL, 
                repo_path=GIT_REPO_PATH, 
                ceda_docs_path=CEDA_DOCS_PATH,
@@ -230,16 +246,18 @@ def parse_docs(git_repo_url=GIT_REPO_URL,
         print(f"Loading {csv_path}.")
         return pd.read_csv(csv_path)
 
-    clone_repo(git_repo_url, repo_path)
+#    clone_repo(git_repo_url, repo_path)
 
     jasmin_docs_path = os.path.join(repo_path, "content", "docs")
     sections = []
 
+    # First, parse the documentation from walking directories
     to_walk = [("JASMIN Docs", jasmin_docs_path, parse_md_file_jasmin), 
                ("CEDA Docs", ceda_docs_path, parse_md_file_cedadocs)]
 
     count = 0
-    for docs_name, docs_path, docs_parser in to_walk:
+    if 0:
+      for docs_name, docs_path, docs_parser in to_walk:
         print(f"Parsing {docs_name} if found.")
         for root, dirs, files in os.walk(docs_path):
             for file in files:
@@ -254,6 +272,10 @@ def parse_docs(git_repo_url=GIT_REPO_URL,
                     count += 1
 
     print(f"Parsed {count} files.")
+
+    # Next, add the MOLES content from a CSV file
+    sections.extend(parse_moles_records())
+
     df = pd.DataFrame(sections, columns=["title", "contents", "page_url"])
 
     df["char_count"] = df["contents"].apply(len)
