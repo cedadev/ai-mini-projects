@@ -56,7 +56,7 @@ class RAGController:
         self.pinecone_api_key = pinecone_api_key
 
         self.pc = Pinecone(api_key=pinecone_api_key)
-        self.csv_path = "ceda_jasmin_docs.csv"
+        self.csv_path = "ceda_jasmin_moles.csv"
         self.df = None
 
         self.pc_index = None
