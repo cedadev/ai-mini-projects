@@ -251,7 +251,7 @@ def parse_docs(git_repo_url=GIT_REPO_URL,
         print(f"Loading {csv_path}.")
         return pd.read_csv(csv_path)
 
-    #clone_repo(git_repo_url, repo_path)
+    clone_repo(git_repo_url, repo_path)
 
     jasmin_docs_path = os.path.join(repo_path, "content", "docs")
     sections = []
@@ -261,8 +261,7 @@ def parse_docs(git_repo_url=GIT_REPO_URL,
                ("CEDA Docs", ceda_docs_path, parse_md_file_cedadocs)]
 
     count = 0
-    if 0:
-      for docs_name, docs_path, docs_parser in to_walk:
+    for docs_name, docs_path, docs_parser in to_walk:
         print(f"Parsing {docs_name} if found.")
         for root, dirs, files in os.walk(docs_path):
             for file in files:
