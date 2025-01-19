@@ -85,10 +85,15 @@ class RAGController:
 
     def reindex(self):
         "Only reindexes from current CSV file (if it exists)."
+        print(f"Loading CSV content")
         self.load_df()
+        print("Creating embeddings")
         self._create_embeddings()
+        print("Deleting index")
         self._delete_index()
+        print("Creating index")
         self._create_index()
+        print("Upsert content")
         self._upsert_index()
 
     def _remove_csv(self):

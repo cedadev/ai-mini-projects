@@ -214,7 +214,7 @@ def parse_md_file_cedadocs(file_path, docs_url="https://help.ceda.ac.uk"):
     return sections
 
 
-def package_moles_record(rec):
+def package_moles_record(rec, max_vars_limit=200, abstract_limit=4000):
     "Repackage a MOLES observation dictionary, ready for putting into DataFrame."
     uuid = rec["uuid"]
     title = f"Catalogue record: {uuid}"
@@ -222,6 +222,11 @@ def package_moles_record(rec):
 
     # Construct content - with ordered keys and pretty-printed
     content = {moles_key_map.get(key, key): rec[key] for key in moles_key_order}
+
+    # Truncate large records
+    content["variables"] = content["variables"][:max_vars_limit]
+    content["abstract"] = content["abstract"][:abstract_limit]
+    
     content = json.dumps(content, indent=2, sort_keys=False)
     return [title, content, page_url]
 
@@ -246,7 +251,7 @@ def parse_docs(git_repo_url=GIT_REPO_URL,
         print(f"Loading {csv_path}.")
         return pd.read_csv(csv_path)
 
-    clone_repo(git_repo_url, repo_path)
+    #clone_repo(git_repo_url, repo_path)
 
     jasmin_docs_path = os.path.join(repo_path, "content", "docs")
     sections = []
@@ -256,8 +261,8 @@ def parse_docs(git_repo_url=GIT_REPO_URL,
                ("CEDA Docs", ceda_docs_path, parse_md_file_cedadocs)]
 
     count = 0
-
-    for docs_name, docs_path, docs_parser in to_walk:
+    if 0:
+      for docs_name, docs_path, docs_parser in to_walk:
         print(f"Parsing {docs_name} if found.")
         for root, dirs, files in os.walk(docs_path):
             for file in files:
