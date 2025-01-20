@@ -56,7 +56,7 @@ class RAGController:
         self.pinecone_api_key = pinecone_api_key
 
         self.pc = Pinecone(api_key=pinecone_api_key)
-        self.csv_path = "ceda_jasmin_docs.csv"
+        self.csv_path = "ceda_jasmin_moles.csv"
         self.df = None
 
         self.pc_index = None
@@ -85,10 +85,15 @@ class RAGController:
 
     def reindex(self):
         "Only reindexes from current CSV file (if it exists)."
+        print(f"Loading CSV content")
         self.load_df()
+        print("Creating embeddings")
         self._create_embeddings()
+        print("Deleting index")
         self._delete_index()
+        print("Creating index")
         self._create_index()
+        print("Upsert content")
         self._upsert_index()
 
     def _remove_csv(self):
@@ -195,7 +200,7 @@ class RAGController:
 #            embeddings = self.embeddings[start_index:end_index]
 
             print(f"Upserting records in index range: [{start_index}:{end_index}]")
-            self._upsert_records(start_index, end_index) #df, embeddings)
+            self._upsert_records(start_index, end_index)
             i += self.batch_size
 
         print(f"Index {self.index_name} has been successfully populated.")
@@ -233,6 +238,8 @@ class RAGController:
     You are a helpful assistant that helps scientists to learn about and work with the Centre for Environmental Data Analysie (CEDA) and
     the JASMIN platform. You understand the connections between CEDA and JASMIN, and you can advise users based on the information you 
     have about both services, to help them with finding data, identifying available services and managing their scientific data workflows.
+
+    You also know about the contents of the CEDA catalogue, so you can point users to specific datasets that might be of interest to them.
 
     Here is some relevant context you can use, each with links to a page in the relevant documentation where the context is retrieved from:
     """
